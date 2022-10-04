@@ -17,8 +17,6 @@
   <% if action_name != "show" %>
     <%= link_to "Show this product", product, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to 'Edit this product', edit_product_path(product), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= button_tag 'Add to cart', data: { action: 'click->hello#toggleToCart' }, class: "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" %>
-    <%= button_tag 'Delete from cart', data: { action: 'click->hello#toggleToCart' }, class: "bg-red-500 hover:bg-blue-700 text-white font-bold py-2 px-4 border border-blue-700 rounded" %>
     <hr class="mt-6">
   <% end %>
 </div>

@@ -31,7 +31,6 @@ class ProductsController < ApplicationController
       else
          render :edit
       end
-    end
   end
 
   def destroy
