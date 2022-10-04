@@ -1,22 +1,18 @@
 class ProductsController < ApplicationController
-  # skip_before_action :verify_authenticity_token
-  #   protect_from_forgery with: :null_session
-  before_action :set_product, only: %i[ show edit update destroy ]
-
   def index
-    @products = Product.all
+    @products = collection
   end
 
   def show
-    @product = Product.find(params[:id])
+    @product = resource
   end
 
   def new
-    @product = Product.new
+    @product = resource
   end
 
   def edit
-    @product = Product.find(params[:id])
+    @product = resource
   end
 
   def create
@@ -29,23 +25,28 @@ class ProductsController < ApplicationController
   end
 
   def update
-    @product = Product.find(params[:id])
+    @product = resource
       if @product.update(product_params)
          redirect_to product_url(@product), notice: "Product was successfully updated."
       else
          render :edit
       end
+    end
   end
 
   def destroy
-    @product = Product.find(params[:id])
+    @product = resource
     @product.destroy
       redirect_to products_url, notice: "Product was successfully destroyed."
   end
 
   private
-    def set_product
-      @product = Product.find(params[:id])
+    def collection
+      Product.all
+    end
+   
+    def resource
+      collection.find(params[:id])
     end
 
     def product_params
