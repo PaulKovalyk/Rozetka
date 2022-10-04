@@ -8,7 +8,7 @@ class ProductsController < ApplicationController
   end
 
   def new
-    @product = resource
+    @product = Product.new
   end
 
   def edit
