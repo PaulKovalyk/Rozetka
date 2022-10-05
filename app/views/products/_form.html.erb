@@ -27,8 +27,13 @@
   </div>
   
   <div class="my-5">
+    <%= form.label :category %>
+    <%= form.select :category_id, Category.pluck(:name, :id), class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  
+  <div class="my-5">
     <%= form.label :status %>
-    <%= form.select :status, Product.statuses.keys, class: "form-multiselect block w-full mt-1"%>
+    <%= form.select :status, Product.statuses.keys, class: "form-select px-4 py-3 rounded-full"%>
   </div>
 
   <div class="inline">

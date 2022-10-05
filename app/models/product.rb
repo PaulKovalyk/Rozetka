@@ -4,4 +4,5 @@ class Product < ApplicationRecord
     'In stock': 'in_stock',
     'Running low':  'running_low'
     }, default: 'in_stock'
+    belongs_to :category
 end
