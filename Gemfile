@@ -80,3 +80,4 @@ end
 
 gem 'rack-cors'
 gem 'tailwindcss-rails', '~> 2.0'
+gem 'devise', '~> 4.8', '>= 4.8.1'

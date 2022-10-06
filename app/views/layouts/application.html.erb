@@ -6,13 +6,16 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag "tailwind", "inter-font", "data-turbo-track": "reload" %>
-
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_importmap_tags %>
   </head>
-
   <body>
-    <main class="container flex px-5 mx-auto mt-28">
+    <header class="flex justify-between px-5 border-2 border-gray-200 shadow-sm">
+    <%= link_to 'Cart', root_path %>
+    <%= link_to 'ROZETKA', root_path %>
+    <%= render 'layouts/navbar' %>
+    </header>
+    <main class="container flex px-5 mx-auto mt-14">
       <%= yield %>
     </main>
   </body>
