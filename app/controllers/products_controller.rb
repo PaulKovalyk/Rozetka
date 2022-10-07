@@ -14,6 +14,11 @@ class ProductsController < ApplicationController
     redirect_to root_path
   end
 
+  def delete_session_cart
+      session[:cart] = nil
+      redirect_to root_path, notice: "Cart was successfully deleted."
+  end
+
   def index
     session[:cart] ||= []
     @cart = Product.find(session[:cart])

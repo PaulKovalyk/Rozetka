@@ -27,7 +27,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_05_145432) do
   create_table "products", force: :cascade do |t|
     t.string "title"
     t.text "description"
-    t.decimal "price"
+    t.decimal "price", precision: 8, scale: 2
     t.enum "status", default: "in_stock", null: false, enum_type: "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
