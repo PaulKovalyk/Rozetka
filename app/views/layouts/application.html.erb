@@ -10,10 +10,16 @@
     <%= javascript_importmap_tags %>
   </head>
   <body>
-    <header class="flex justify-between px-5 border-2 border-gray-200 shadow-sm">
-    <%= link_to 'Cart', root_path %>
-    <%= link_to 'ROZETKA', root_path %>
-    <%= render 'layouts/navbar' %>
+    <header class="flex justify-between px-5 bg-blue-500 border-2 border-gray-200 border-indigo-500 shadow-sm h-14">
+      <div class="my-auto font-bold text-amber-300">
+        <%= link_to 'Cart', root_path %>
+      </div>
+      <div class="my-auto font-bold text-amber-300">
+        <%= link_to 'ROZETKA', root_path %>
+      </div>
+      <div class="my-auto font-bold text-amber-300">
+        <%= render 'layouts/navbar' %>
+      </div>
     </header>
     <main class="container flex px-5 mx-auto mt-14">
       <%= yield %>
