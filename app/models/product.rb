@@ -5,5 +5,5 @@ class Product < ApplicationRecord
     'Running low': 'running_low'
   }, default: 'in_stock'
   belongs_to :category
-  belongs_to :OrderItem
+  has_and_belongs_to_many :order
 end
