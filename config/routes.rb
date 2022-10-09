@@ -1,8 +1,12 @@
 Rails.application.routes.draw do
+  get 'carts/new'
+  get 'carts/show'
+  get 'carts/create'
   devise_for :users
   resources :products
   resources :categories
   resources :orders
+  resource :cart
   post 'products/add_to_cart/:id', to: 'products#add_to_cart', as: 'add_to_cart'
   delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
   get '/delete_session_cart', to: 'products#delete_session_cart', via: [:destroy]

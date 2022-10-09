@@ -1,9 +1,8 @@
-class ProductsController < ApplicationController
-  include SessionCart
+# frozen_string_literal: true
 
+class ProductsController < ApplicationController
   def add_to_cart
     id = params[:id].to_i
-
     session[:cart] << id unless session[:cart].include?(id)
     redirect_to root_path
   end
@@ -15,17 +14,12 @@ class ProductsController < ApplicationController
   end
 
   def delete_session_cart
-      session[:cart] = nil
-      redirect_to root_path, notice: "Cart was successfully deleted."
+    session[:cart] = nil
+    redirect_to root_path, notice: 'Cart was successfully deleted.'
   end
 
   def index
-    session[:cart] ||= []
-    @cart = Product.find(session[:cart])
-    @total_price = 0
-    @cart.each do |product|
-      @total_price += product.price
-    end
+    @cart = set_cart_products
     @products = collection
   end
 
@@ -44,7 +38,7 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to product_url(@product), notice: "Product was successfully created."
+      redirect_to product_url(@product), notice: 'Product was successfully created.'
     else
       render :new, status: :unprocessable_entity
     end
@@ -53,7 +47,7 @@ class ProductsController < ApplicationController
   def update
     @product = resource
     if @product.update(product_params)
-      redirect_to product_url(@product), notice: "Product was successfully updated."
+      redirect_to product_url(@product), notice: 'Product was successfully updated.'
     else
       render :edit
     end
@@ -62,7 +56,7 @@ class ProductsController < ApplicationController
   def destroy
     @product = resource
     @product.destroy
-    redirect_to products_url, notice: "Product was successfully destroyed."
+    redirect_to products_url, notice: 'Product was successfully destroyed.'
   end
 
   private
@@ -75,7 +69,19 @@ class ProductsController < ApplicationController
     collection.find(params[:id])
   end
 
+  def set_cart_products
+    if user_signed_in?
+      @cart = current_user.cart || current_user.create_cart
+      session[:cart] = nil unless @cart.products.empty?
+      @cart.product_ids = session[:cart] unless session[:cart].nil?
+      @cart.products
+    else
+      session[:cart] ||= []
+      Product.find(session[:cart])
+    end
+  end
+
   def product_params
-    params.require(:product).permit(:title, :description, :price, :category_id, :status, :order_item_id)
+    params.require(:product).permit(:title, :description, :price, :category_id, :status, :order_id)
   end
 end

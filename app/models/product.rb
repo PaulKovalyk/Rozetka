@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class Product < ApplicationRecord
   enum :status, {
     'Out of stock': 'out_of_stock',
@@ -6,4 +8,5 @@ class Product < ApplicationRecord
   }, default: 'in_stock'
   belongs_to :category
   has_and_belongs_to_many :order
+  has_and_belongs_to_many :carts
 end
