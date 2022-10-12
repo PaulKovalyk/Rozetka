@@ -47,8 +47,8 @@ RSpec.describe ProductsController, type: :controller do
     let(:valid_params) do
       {
         product: { title: 'Dell', description: ' Lorem ipsum dolor sit amet',
-        price: 40,
-        category_id: category.id }
+                   price: 40,
+                   category_id: category.id }
       }
     end
     let(:invalid_params) { { product: { title: '', category_id: category.id } } }
