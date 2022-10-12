@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :new]
+  before_action :authenticate_user!, only: %i[create new]
 
   def add_to_cart
     id = params[:id].to_i
@@ -40,9 +40,9 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     if @product.save
-      redirect_to product_url(@product), notice: 'Product was successfully created.'
+      redirect_to root_path, notice: 'Product was successfully created.'
     else
-      render :new, status: :unprocessable_entity
+      redirect_to root_path
     end
   end
 

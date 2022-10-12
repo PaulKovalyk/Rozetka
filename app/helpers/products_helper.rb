@@ -1,10 +1,11 @@
-module ProductsHelper
-    def total_price_session
-        price = Product.find(session[:cart]).collect{|product| product.price}.sum
-    end
+# frozen_string_literal: true
 
-    def total_price_current_user
-        price = Product.find(current_user.cart.product_ids).collect{|product| product.price}.sum
-    end
+module ProductsHelper
+  def total_price_session
+    price = Product.find(session[:cart]).collect(&:price).sum
+  end
+
+  def total_price_current_user
+    price = Product.find(current_user.cart.product_ids).collect(&:price).sum
+  end
 end
-  
