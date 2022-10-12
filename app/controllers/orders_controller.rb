@@ -3,10 +3,6 @@
 class OrdersController < ApplicationController
   def new
     @cart = Product.find(session[:cart])
-    @total_price = 0
-    @cart.each do |product|
-      @total_price += product.price
-    end
     @order = Order.new
   end
 
