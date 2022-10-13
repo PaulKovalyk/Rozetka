@@ -1,19 +1,19 @@
 # frozen_string_literal: true
 
 class CartsController < ApplicationController
-  def new
-    @cart = Cart.new
+  def add_product
+    ids = @cart.product_ids << params[:id].to_i
+    @cart.update(product_ids: ids)
+    redirect_to root_path
+  end
+
+  def remove_product
+    ids = @cart.product_ids
+    ids.delete(params[:id].to_i)
+    @cart.update(product_ids: ids)
+    redirect_to root_path
   end
 
   def show; end
 
-  def create
-    @cart = Cart.create(cart_params)
-  end
-
-  private
-
-  def cart_params
-    params[:cart]
-  end
 end

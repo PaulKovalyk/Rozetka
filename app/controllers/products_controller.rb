@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: %i[create new]
+  before_action :authenticate_user!, only: [:create, :new]
 
   def add_to_cart
     id = params[:id].to_i
-    session[:cart] << id unless session[:cart].include?(id)
-    redirect_to root_path
+      session[:cart] << id unless session[:cart].include?(id)
+      redirect_to root_path
   end
 
   def remove_from_cart
@@ -71,19 +71,7 @@ class ProductsController < ApplicationController
     collection.find(params[:id])
   end
 
-  def set_cart_products
-    if user_signed_in?
-      @cart = current_user.cart || current_user.create_cart
-      session[:cart] = nil unless @cart.products.empty?
-      @cart.product_ids = session[:cart] unless session[:cart].nil?
-      @cart.products
-    else
-      session[:cart] ||= []
-      Product.find(session[:cart])
-    end
-  end
-
   def product_params
-    params.require(:product).permit(:title, :description, :price, :category_id, :status, :order_id)
+    params.require(:product).permit(:title, :description, :price, :category_id, :status, :order_id, :cart_id)
   end
 end

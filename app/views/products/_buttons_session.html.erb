@@ -1,0 +1,11 @@
+<div class="flex items-center gap-2 p-2 my-2">
+  <% if action_name != "show" %>
+    <%= link_to "Show this product", product, class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded" %>
+    <%= link_to 'Edit this product', edit_product_path(product), class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded" %>
+  <% end %>
+  <% if cart.include?(product) %>
+    <%= button_to 'Remove from cart', remove_from_cart_path(product), method: :delete, class: "bg-transparent hover:bg-red-500 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded" %>
+  <% else %>
+    <%= button_to 'Add to cart', add_to_cart_path(product), method: :post,class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded"  %>
+  <% end %>
+</div>
