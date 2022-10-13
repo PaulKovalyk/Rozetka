@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   post 'carts/remove_product/:id', to: 'carts#remove_product', as: 'remove_product'
   delete 'products/remove_from_cart/:id', to: 'products#remove_from_cart', as: 'remove_from_cart'
   get '/delete_session_cart', to: 'products#delete_session_cart', via: [:destroy]
+  get '/empty_cart', to: 'carts#empty_cart', via: [:destroy]
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

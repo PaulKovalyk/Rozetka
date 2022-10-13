@@ -14,6 +14,11 @@ class CartsController < ApplicationController
     redirect_to root_path
   end
 
+  def empty_cart
+    @cart.update(product_ids: nil)
+    redirect_to root_path
+  end
+
   def show; end
 
 end

@@ -45,7 +45,7 @@
           <tbody>
             <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                Total 
+                Total
               </th>
               <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
               </th>
@@ -63,7 +63,12 @@
             <th>
             </th>
             <th>
-              <%= link_to 'Empty cart', delete_session_cart_path, class: "bg-transparent hover:bg-red-900 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded" %>
+              <% if current_user.nil? %>
+                <%= link_to 'Empty cart', delete_session_cart_path, class: "bg-transparent hover:bg-red-900 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded" %>
+                <% else %>
+                <%= link_to 'Empty cart', empty_cart_path, class: "bg-transparent hover:bg-red-900 text-blue-700 font-semibold hover:text-white py-2 px-4  border border-blue-500 hover:border-transparent rounded" %>
+              <% end %>
+
             </th>
           </tbody>
         </table>
