@@ -26,6 +26,7 @@ class ProductsController < ApplicationController
   end
 
   def show
+    @cart = set_cart_products
     @product = resource
   end
 
@@ -34,6 +35,7 @@ class ProductsController < ApplicationController
   end
 
   def edit
+    @cart = set_cart_products
     @product = resource
   end
 
