@@ -44,7 +44,7 @@ class ProductsController < ApplicationController
     if @product.save
       redirect_to root_path, notice: 'Product was successfully created.'
     else
-      redirect_to root_path
+      render :new, status: :unprocessable_entity
     end
   end
 

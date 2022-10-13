@@ -6,7 +6,7 @@ let data = {
   product : {
    title: "test",
    description: "test",
-   price: 100    
+   price: 100
 }
 }
 export default class extends Controller {
