@@ -19,8 +19,8 @@ class ApplicationController < ActionController::Base
   end
 
   def configure_permitted_parameters
-    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email role])
-    devise_parameter_sanitizer.permit(:account_update, keys: %i[email role])
+    devise_parameter_sanitizer.permit(:sign_up, keys: %i[email role first_name last_name])
+    devise_parameter_sanitizer.permit(:account_update, keys: %i[email role first_name last_name])
   end
 
   def after_sign_out_path_for(_resource_or_scope)
