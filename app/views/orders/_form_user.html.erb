@@ -1,0 +1,73 @@
+<%= form_with url:orders_path(product_ids: @cart.product_ids), class: "contents" do |form| %>
+  <% if order.errors.any? %>
+    <div id="error_explanation" class="px-3 py-2 mt-3 font-medium text-red-500 rounded-lg bg-red-50">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this product from being saved:</h2>
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <div class="my-5">
+    <%= form.label :lastname %>
+    <%= form.text_field :lastname, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :firstname %>
+    <%= form.text_field :firstname, rows: 4, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="my-5">
+    <%= form.label :phone %>
+    <%= form.text_field :phone, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+  </div>
+  <div class="max-w-2xl mx-auto mb-4">
+    <div class="flex flex-col">
+      <div class="overflow-x-auto shadow-md sm:rounded-lg">
+        <div class="inline-block min-w-full align-middle">
+          <div class="overflow-hidden ">
+            <table class="min-w-full divide-y divide-gray-200 table-fixed dark:divide-gray-700">
+              <thead class="bg-gray-100 dark:bg-gray-700">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Product Name
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Category
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-xs font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Price
+                  </th>
+                </tr>
+              </thead>
+              <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+                <% @cart.products.each do |product| %>
+                  <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
+                    <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= product.title %></td>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><%= product.category.name%></td>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= number_to_currency(product.price, unit: "UAH", delimiter: " ", format: "%n %u") %></td>
+                  </tr>
+                <% end %>
+              </tbody>
+              <thead class="bg-gray-100 dark:bg-gray-700">
+                <tr>
+                  <th scope="col" class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase dark:text-gray-400">
+                    Total
+                  </th>
+                  <th >
+                  </th>
+                  <th scope="col" class="px-6 py-3 text-sm font-medium tracking-wider text-left text-gray-700 uppercase text-s dark:text-gray-400">
+                    <%= number_to_currency(total_price_current_user, unit: "UAH", delimiter: " ", format: "%n %u") %>
+                  </th>
+                </tr>
+              </thead>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="inline">
+    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+  </div>
+<% end %>

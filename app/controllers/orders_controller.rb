@@ -2,7 +2,6 @@
 
 class OrdersController < ApplicationController
   def new
-    @cart = Product.find(session[:cart])
     @order = Order.new
   end
 
@@ -10,6 +9,7 @@ class OrdersController < ApplicationController
     @order = Order.new(orders_params)
     if @order.save
       session[:cart] = nil
+      @cart.update(product_ids: nil) unless current_user.nil?
       redirect_to root_path, notice: 'Order was successfully created.'
     else
       render :new, status: :unprocessable_entity
