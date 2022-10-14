@@ -2,10 +2,10 @@ require 'rails_helper'
 
 RSpec.describe 'ProductsController', type: :request do
   let!(:category) { create(:category) }
-  let!(:product) { create((:product), category_id: category.id) }
+  let!(:product) { create(:product, category_id: category.id )}
 
 
-  let!(:invalid_attributes) do {
+  let(:invalid_attributes) do {
     product: {
       title: '1',
       price: 'cc',
@@ -13,7 +13,7 @@ RSpec.describe 'ProductsController', type: :request do
       }
     }
   end
-  let!(:new_attributes) do {
+  let(:new_attributes) do {
     product: {title: 'Kettle',
     category_id: category.id,
     price: 12334,
@@ -117,6 +117,17 @@ RSpec.describe 'ProductsController', type: :request do
       expect(flash[:notice]).to eq('Product was successfully destroyed.')
     end
   end
+
+  describe 'POST :add_to_cart' do
+    let(:new_attributes) do {
+      product: {id: 1}
+      }
+    end
+  it 'returns http success' do
+    post :products_add_to_cart, params: product
+    expect(session[:cart]).to match_array [id]
+  end
+end
 
 
 end
