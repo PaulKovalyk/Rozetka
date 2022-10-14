@@ -8,6 +8,7 @@ class User < ApplicationRecord
   enum role: { user: 0, admin: 1 }
   after_initialize :set_default_role, if: :new_record?
   has_one :cart
+  has_many :orders
   validates :first_name, presence: true, length: { minimum: 1, maximum: 30 }
   validates :last_name, presence: true, length: { minimum: 1, maximum: 30 }
   validates :email, presence: true, uniqueness: true, length: { minimum: 3, maximum: 40 }

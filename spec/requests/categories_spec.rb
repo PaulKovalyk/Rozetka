@@ -13,4 +13,18 @@ RSpec.describe '/categories', type: :request do
       end.to change(Category, :count).by(1)
     end
   end
+
+  describe 'GET /update' do
+    let(:params)  category: { name: 'Books' }
+
+    it 'update success' do
+      put @category, params: params
+
+      product.reload
+
+      expect(product.title).to eq('Books')
+
+    end
+
+  end
 end

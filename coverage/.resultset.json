@@ -1,193 +1,6 @@
 {
   "RSpec": {
     "coverage": {
-      "/home/paul/ruby/Rozetka/app/models/user.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/models/application_record.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/helpers/application_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/helpers/carts_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/helpers/products_helper.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/models/category.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/controllers/categories_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          1,
-          1,
-          null,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/controllers/application_controller.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          0,
-          0,
-          0,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null
-        ]
-      },
-      "/home/paul/ruby/Rozetka/app/models/product.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          1,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          1,
-          1,
-          1,
-          null
-        ]
-      },
       "/home/paul/ruby/Rozetka/app/channels/application_cable/channel.rb": {
         "lines": [
           null,
@@ -203,6 +16,41 @@
       "/home/paul/ruby/Rozetka/app/channels/application_cable/connection.rb": {
         "lines": [
           null,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/controllers/application_controller.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
           null,
           0,
           0,
@@ -237,6 +85,69 @@
           null,
           0,
           null,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/controllers/categories_controller.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
           0
         ],
         "branches": {
@@ -357,6 +268,46 @@
         "branches": {
         }
       },
+      "/home/paul/ruby/Rozetka/app/helpers/application_helper.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/helpers/carts_helper.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/helpers/products_helper.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/paul/ruby/Rozetka/app/jobs/application_job.rb": {
         "lines": [
           null,
@@ -384,11 +335,34 @@
         "branches": {
         }
       },
+      "/home/paul/ruby/Rozetka/app/models/application_record.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
       "/home/paul/ruby/Rozetka/app/models/cart.rb": {
         "lines": [
           null,
           null,
           0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/models/category.rb": {
+        "lines": [
+          null,
+          null,
           0,
           0,
           0,
@@ -409,8 +383,52 @@
         ],
         "branches": {
         }
+      },
+      "/home/paul/ruby/Rozetka/app/models/product.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
+      },
+      "/home/paul/ruby/Rozetka/app/models/user.rb": {
+        "lines": [
+          null,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          0,
+          0,
+          0,
+          0
+        ],
+        "branches": {
+        }
       }
     },
-    "timestamp": 1665682670
+    "timestamp": 1665737298
   }
 }
