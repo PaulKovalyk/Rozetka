@@ -7,6 +7,7 @@ class OrdersController < ApplicationController
 
   def create
     @order = Order.new(orders_params)
+
     if @order.save
       session[:cart] = nil
       @cart.update(product_ids: nil) unless current_user.nil?
@@ -19,6 +20,6 @@ class OrdersController < ApplicationController
   private
 
   def orders_params
-    params.permit(:firstname, :lastname, :phone, :user_id, product_ids: [])
+    params.permit(:first_name, :last_name, :phone, :address, :user_id, product_ids: [])
   end
 end

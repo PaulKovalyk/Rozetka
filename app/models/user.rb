@@ -13,6 +13,7 @@ class User < ApplicationRecord
   validates :last_name, presence: true, length: { minimum: 1, maximum: 30 }
   validates :email, presence: true, uniqueness: true, length: { minimum: 3, maximum: 40 }
 
+  accepts_nested_attributes_for :orders
   def set_default_role
     self.role ||= :user
   end

@@ -39,6 +39,8 @@ ActiveRecord::Schema[7.0].define(version: 2022_10_14_094648) do
   end
 
   create_table "orders", force: :cascade do |t|
+    t.string "first_name"
+    t.string "last_name"
     t.string "address"
     t.string "phone"
     t.datetime "created_at", null: false
