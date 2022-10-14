@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
 class ProductsController < ApplicationController
-  before_action :authenticate_user!, only: [:create, :new]
-
   def add_to_cart
     id = params[:id].to_i
       session[:cart] << id unless session[:cart].include?(id)
@@ -53,7 +51,7 @@ class ProductsController < ApplicationController
     if @product.update(product_params)
       redirect_to product_url(@product), notice: 'Product was successfully updated.'
     else
-      render :edit
+      render :edit, status: :unprocessable_entity
     end
   end
 

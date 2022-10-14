@@ -1,6 +1,6 @@
 require "rails_helper"
 
-RSpec.describe '/categories', type: :request do
+RSpec.describe 'CategoriesController', type: :request do
 
   let!(:category) { create(:category) }
   let(:valid_params) do
