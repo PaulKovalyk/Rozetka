@@ -63,8 +63,8 @@ RSpec.describe ProductsController, type: :controller do
     it 'creation failed' do
       post :create, params: invalid_params
 
-      expect(response).to have_http_status(:found)
-      expect(response).to redirect_to root_path
+      expect(response).to have_http_status(:unprocessable_entity)
+      expect(response).to render_template :new
     end
   end
 
