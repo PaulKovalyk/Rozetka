@@ -6,7 +6,7 @@ class Product < ApplicationRecord
     'In stock': 'in_stock',
     'Running low': 'running_low'
   }, default: 'in_stock'
-  belongs_to :category
+  belongs_to :category, optional: true
   has_and_belongs_to_many :order
   has_and_belongs_to_many :carts
   validates :title, :description, :price, presence: true

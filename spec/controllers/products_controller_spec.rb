@@ -68,14 +68,14 @@ RSpec.describe ProductsController, type: :controller do
     end
   end
 
-  # describe 'GET /destroy' do
-  #   it 'destroed success' do
-  #     delete :product, params: { id: product.id }
+  describe 'GET /destroy' do
+    it 'destroed success' do
+      delete :product, params: { id: product.id }
 
-  #     expect(response).to have_http_status(:found)
-  #     expect(response).to redirect_to(products_path)
-  #   end
-  # end
+      expect(response).to have_http_status(:found)
+      expect(response).to redirect_to(products_path)
+    end
+  end
 
   describe 'GET /update' do
     let(:params) { { product: { title: 'ASUS', price: 400 }, id: product.id } }
