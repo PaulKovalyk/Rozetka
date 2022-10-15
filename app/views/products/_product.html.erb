@@ -13,7 +13,7 @@
   </p>
   <p class="my-5">
     <strong class="block mb-1 font-medium text-blue-600">Category:</strong>
-    <%= product.category.name if product.category %>
+    <%= product.category.name if product.category if product.category %>
   </p>
   <div class="flex items-center gap-2 p-2 my-2">
   <% if action_name != "show" %>

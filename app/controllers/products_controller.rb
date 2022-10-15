@@ -3,8 +3,8 @@
 class ProductsController < ApplicationController
   def add_to_cart
     id = params[:id].to_i
-      session[:cart] << id unless session[:cart].include?(id)
-      redirect_to root_path
+    session[:cart] << id unless session[:cart].include?(id)
+    redirect_to root_path
   end
 
   def remove_from_cart
@@ -49,7 +49,7 @@ class ProductsController < ApplicationController
   def update
     @product = resource
     if @product.update(product_params)
-      redirect_to product_url(@product), notice: 'Product was successfully updated.'
+      redirect_to products_url, notice: 'Product was successfully updated.'
     else
       render :edit, status: :unprocessable_entity
     end

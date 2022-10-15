@@ -20,5 +20,4 @@ class CartsController < ApplicationController
   end
 
   def show; end
-
 end

@@ -48,7 +48,7 @@
                 <% @cart.each do |product| %>
                   <tr class="hover:bg-gray-100 dark:hover:bg-gray-700">
                     <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"><%= product.title %></td>
-                    <td class="px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><%= product.category.name%></td>
+                    <td class="px-6 py-4 text-sm font-medium text-gray-500 whitespace-nowrap dark:text-white"><%= product.category.name if product.category%></td>
                     <td class="px-6 py-4 text-sm font-medium text-gray-900 whitespace-nowrap dark:text-white"> <%= number_to_currency(product.price, unit: "UAH", delimiter: " ", format: "%n %u") %></td>
                   </tr>
                 <% end %>

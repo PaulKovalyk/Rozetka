@@ -34,7 +34,7 @@
                   <%= product.title %>
                 </th>
                 <td class="px-6 py-4">
-                  <%= product.category.name %>
+                  <%= product.category.name if product.category if product.category%>
                 </td>
                 <td class="px-6 py-4">
                   <%= number_to_currency(product.price, unit: "UAH", delimiter: " ", format: "%n %u") %>

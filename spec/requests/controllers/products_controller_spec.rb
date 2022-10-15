@@ -70,7 +70,7 @@ RSpec.describe ProductsController, type: :controller do
 
   describe 'GET /destroy' do
     it 'destroed success' do
-      delete :product, params: { id: product.id }
+      delete :destroy, params: { id: product.id }
 
       expect(response).to have_http_status(:found)
       expect(response).to redirect_to(products_path)
@@ -86,7 +86,7 @@ RSpec.describe ProductsController, type: :controller do
       product.reload
       expect(product.title).to eq('ASUS')
       expect(product.price).to eq(400)
-      expect(response).to redirect_to product_path
+      expect(response).to redirect_to products_path
     end
 
     context 'when update is fail' do
