@@ -1,15 +1,13 @@
-<div class="w-full">
+<div class="w-full ">
   <% if notice.present? %>
-    <p class="inline-block px-3 py-2 mb-5 font-medium text-green-500 rounded-lg bg-green-50" id="notice"><%= notice %></p>
+    <p class="inline-block px-3 py-2 mb-5 font-medium text-black bg-green-500 rounded-lg" id="notice"><%= notice %></p>
   <% end %>
-  <div class="flex items-center justify-between">
-    <h1 class="text-4xl font-bold text-blue-600">Products</h1>
-    <%= render 'cart' %>
-    <%= link_to 'New product', new_product_path, class: "bg-transparent hover:bg-blue-500 text-blue-700 font-semibold hover:text-white py-2 px-4 border border-blue-500 hover:border-transparent rounded mt-2" %>
+  <div class="text-center bg-gray-100 ">
+    <h1 class="text-4xl font-bold text-black">Top sellers</h1>
   </div>
-  <div id="products" class="min-w-full">
-    <article>
+  <div class="container flex flex-row flex-wrap justify-around bg-gray-100 ">
+     <% @products.each do |product| %>
       <%= render @products %>
-    </article>
+      <% end %>
   </div>
 </div>

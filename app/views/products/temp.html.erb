@@ -1,0 +1,60 @@
+
+
+<!-- component -->
+  <div class="w-full max-w-sm p-4 mx-auto sm:w-1/2">
+    <div class="flex flex-col p-10 bg-white rounded-lg shadow-2xl card">
+      <div class="prod-title">
+        <p class="text-2xl font-bold text-gray-900 uppercase"><%= product.title %></p>
+         <p class="my-5">
+    <strong class="block mb-1 font-medium text-blue-600">Category:</strong>
+    <%= product.category.name if product.category if product.category %>
+  </p>
+        <p class="text-sm text-gray-400 uppercase">
+          <%== product.description %>
+        </p>
+      </div>
+      <div class="prod-img">
+        <img src="https://unsplash.com/photos/IJjfPInzmdk/download?force=true&w=1920"
+             class="object-cover object-center w-full" />
+      </div>
+      <div class="grid gap-10 prod-info">
+        <div>
+          <ul class="flex flex-row items-center justify-center">
+            <li class="mr-4 last:mr-0">
+              <span
+                    class="block p-1 transition duration-300 ease-in border-2 border-gray-500 rounded-full">
+                <a href="#blue" class="block w-6 h-6 bg-blue-900 rounded-full"></a>
+              </span>
+            </li>
+            <li class="mr-4 last:mr-0">
+              <span
+                    class="block p-1 transition duration-300 ease-in border-2 border-white rounded-full hover:border-gray-500">
+                <a href="#yellow" class="block w-6 h-6 bg-yellow-500 rounded-full"></a>
+              </span>
+            </li>
+            <li class="mr-4 last:mr-0">
+              <span
+                    class="block p-1 transition duration-300 ease-in border-2 border-white rounded-full hover:border-gray-500">
+                <a href="#red" class="block w-6 h-6 bg-red-500 rounded-full"></a>
+              </span>
+            </li>
+            <li class="mr-4 last:mr-0">
+              <span
+                    class="block p-1 transition duration-300 ease-in border-2 border-white rounded-full hover:border-gray-500">
+                <a href="#green" class="block w-6 h-6 bg-green-500 rounded-full"></a>
+              </span>
+            </li>
+          </ul>
+        </div>
+        <div class="flex flex-col items-center justify-between text-gray-900 md:flex-row">
+          <p class="text-xl font-bold"><%= number_to_currency(product.price, unit: "UAH", delimiter: " ", format: "%n %u") %></p>
+
+   <% if current_user.nil? %>
+    <%= render "buttons_session", product: product , cart: @cart %>
+  <% else %>
+    <%= render "buttons_user", product: product , cart: @cart %>
+  <% end %>
+        </div>
+      </div>
+    </div>
+  </div>

@@ -19,12 +19,10 @@ class ProductsController < ApplicationController
   end
 
   def index
-    @cart = set_cart_products
     @products = collection
   end
 
   def show
-    @cart = set_cart_products
     @product = resource
   end
 
@@ -33,7 +31,6 @@ class ProductsController < ApplicationController
   end
 
   def edit
-    @cart = set_cart_products
     @product = resource
   end
 
@@ -57,8 +54,26 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = resource
-    @product.destroy
-    redirect_to products_url, notice: 'Product was successfully destroyed.'
+    if Cart.all.exclude?(product_ids: @product.id)
+      @product.destroy
+      flash[:notice] = 'Product was successfully destroyed.'
+      redirect_to root_path
+    else
+      flash[:notice] = 'The product cannot be removed, it is in the shopping cart.'
+      redirect_to root_path
+    end
+  end
+
+  def destroy_for_session
+    @product = resource
+    if session[:cart].exclude?(@product.id)
+      @product.destroy
+      flash[:notice] = 'Product was successfully destroyed.'
+      redirect_to root_path
+    else
+      flash[:notice] = 'The product cannot be removed, it is in the shopping cart.'
+      redirect_to root_path
+    end
   end
 
   private
