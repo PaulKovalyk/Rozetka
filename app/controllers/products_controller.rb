@@ -54,14 +54,13 @@ class ProductsController < ApplicationController
 
   def destroy
     @product = resource
-    if Cart.all.exclude?(product_ids: @product.id)
+    if @product.carts.empty?
       @product.destroy
       flash[:notice] = 'Product was successfully destroyed.'
-      redirect_to root_path
     else
       flash[:notice] = 'The product cannot be removed, it is in the shopping cart.'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   def destroy_for_session
@@ -69,11 +68,10 @@ class ProductsController < ApplicationController
     if session[:cart].exclude?(@product.id)
       @product.destroy
       flash[:notice] = 'Product was successfully destroyed.'
-      redirect_to root_path
     else
       flash[:notice] = 'The product cannot be removed, it is in the shopping cart.'
-      redirect_to root_path
     end
+    redirect_to root_path
   end
 
   private

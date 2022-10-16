@@ -4,7 +4,6 @@ class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :set_cart_products
 
-
   def set_cart_products
     if user_signed_in?
       @cart = current_user.cart || current_user.create_cart
@@ -16,6 +15,7 @@ class ApplicationController < ActionController::Base
       @cart = Product.find(session[:cart])
     end
   end
+
   protected
 
   def configure_permitted_parameters

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe 'CartsController', type: :request do
@@ -9,46 +11,48 @@ RSpec.describe 'CartsController', type: :request do
   describe 'POST :add_product' do
     context 'when user is authorized' do
       before { sign_in user }
-        it 'add product to user cart' do
-          post add_product_path(product1)
 
-          cart.reload
+      it 'add product to user cart' do
+        post add_product_path(product1)
 
-          expect(cart.product_ids).to match_array(product1.id)
-          expect(response).to redirect_to root_path
-        end
+        cart.reload
+
+        expect(cart.product_ids).to match_array(product1.id)
+        expect(response).to redirect_to root_path
+      end
     end
   end
 
   describe 'POST :remove_product' do
     context 'when user is authorized' do
       before { sign_in user }
-        it 'remove product from user cart' do
-          post add_product_path(product1)
-          post remove_product_path(product1)
 
+      it 'remove product from user cart' do
+        post add_product_path(product1)
+        post remove_product_path(product1)
 
-          cart.reload
+        cart.reload
 
-          expect(cart.product_ids).not_to match_array(product1.id)
-          expect(response).to redirect_to root_path
-        end
+        expect(cart.product_ids).not_to match_array(product1.id)
+        expect(response).to redirect_to root_path
+      end
     end
   end
 
   describe 'GET :empty cart' do
     context 'when user is authorized' do
       before { sign_in user }
-        it 'will empty users cart' do
-          post add_product_path(product1)
-          post add_product_path(product2)
-          get empty_cart_path
 
-          cart.reload
+      it 'will empty users cart' do
+        post add_product_path(product1)
+        post add_product_path(product2)
+        get empty_cart_path
 
-          expect(cart.product_ids).to eq([])
-          expect(response).to redirect_to root_path
-        end
+        cart.reload
+
+        expect(cart.product_ids).to eq([])
+        expect(response).to redirect_to root_path
+      end
     end
   end
 end

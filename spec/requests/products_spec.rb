@@ -5,6 +5,8 @@ require 'rails_helper'
 RSpec.describe 'ProductsController', type: :request do
   let!(:category) { create(:category) }
   let!(:product) { create(:product, category_id: category.id) }
+  let!(:user) { create(:user, email: 'hello@com') }
+  let!(:cart) { create(:cart, user_id: user.id, product_ids: []) }
   let!(:product1) { create(:product, category_id: category.id) }
   let(:invalid_attributes) do
     {
@@ -118,16 +120,54 @@ RSpec.describe 'ProductsController', type: :request do
   end
 
   describe 'DELETE :destroy' do
-    it 'destroys the requested category' do
-      expect do
-        delete product_url(product)
-      end.to change(Product, :count).by(-1)
+    context 'when user is authorized' do
+      before { sign_in user }
+
+      it 'redirects to the product list' do
+        delete product_url(product1)
+
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq('Product was successfully destroyed.')
+      end
     end
 
-    it 'redirects to the category list' do
-      delete product_url(product)
-      expect(response).to redirect_to(products_url)
-      expect(flash[:notice]).to eq('Product was successfully destroyed.')
+    context 'when user is authorized' do
+      before { sign_in user }
+
+      it 'redirects when product cant be deleted' do
+        post add_product_path(product)
+
+        cart.reload
+        delete product_url(product)
+
+        product.reload
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq('The product cannot be removed, it is in the shopping cart.')
+      end
+    end
+  end
+
+  describe 'DELETE :destroy_for_session' do
+    context 'when user is not authorized' do
+      it 'redirects to the product list' do
+        delete destroy_for_session_path(product1)
+
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq('Product was successfully destroyed.')
+      end
+    end
+
+    context 'when user is not authorized' do
+      it 'redirects when product cant be deleted' do
+        post add_to_cart_path(product)
+
+        cart.reload
+        delete destroy_for_session_path(product)
+
+        product.reload
+        expect(response).to redirect_to(root_path)
+        expect(flash[:notice]).to eq('The product cannot be removed, it is in the shopping cart.')
+      end
     end
   end
 

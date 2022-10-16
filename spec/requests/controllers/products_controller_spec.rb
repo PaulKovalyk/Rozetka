@@ -73,7 +73,7 @@ RSpec.describe ProductsController, type: :controller do
       delete :destroy, params: { id: product.id }
 
       expect(response).to have_http_status(:found)
-      expect(response).to redirect_to(products_path)
+      expect(response).to redirect_to(root_path)
     end
   end
 
